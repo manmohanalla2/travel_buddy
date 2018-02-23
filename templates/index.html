@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <title>Get Twitter Followers</title>
+       <link rel="stylesheet" media="screen" href ="static/bootstrap.min.css">
+       <link rel="icon" href="http://vignette1.wikia.nocookie.net/survivor-org/images/5/52/M_title.png/revision/latest?cb=20130927203814">
+       <link rel="stylesheet" href="static/bootstrap-theme.min.css">
+       <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+ 
+    </head>
+    <body>
+ <div style="float:right">
+<form align="right" name="form1" method="post" action="/logout">
+  <label class="logoutLblPos">
+  <input name="submit2" type="submit" id="submit2" value="log out">
+  </label>
+</form>
+</div>
+ 
+<div class="container">
+ 
+ 
+  <h2>Find Common Travellers</h2>
+  <form  action="/common_travellers" method="post" role="form">
+    {{ form.csrf }}
+    <div class="form-group">
+      <label for="name_a">Find users with City:</label>
+      <input type="text" class="form-control" id="name" name="name_a" placeholder="Find users with City">
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+  <br>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+ 
+        {% for message in messages %}
+            {% if "Error" not in message[1]: %}
+                <div class="alert alert-info">
+                <strong>Message: </strong> {{ message[1] }}
+                </div>
+            {% endif %}
+ 
+            {% if "Error" in message[1]: %}
+                <div class="alert alert-warning">
+                {{ message[1] }}
+                </div>
+            {% endif %}
+        {% endfor %}
+            {% endif %}
+        {% endwith %}
+ 
+</div>
+<br>            
+</div>
+</div>
+</body>
+</html>

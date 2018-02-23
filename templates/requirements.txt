@@ -1,0 +1,4 @@
+Flask==0.11.1
+WTForms==2.1
+celery==4.0.2
+PyMySQL==0.8.0
